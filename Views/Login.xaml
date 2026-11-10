@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="arodriguezExamen.Views.Login"
+             Title="Login"
+             BackgroundColor="#F6F2F2">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <Image Source="logo_sudamericano.png" HeightRequest="90" />
+
+            <Label Text="CURSOS ONLINE - INICIO DE SESIÓN"
+                   Style="{StaticResource TituloStyle}" />
+
+            <!-- Grid 2 filas x 2 columnas -->
+            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*"
+                  RowSpacing="10" ColumnSpacing="10">
+                <Label Grid.Row="0" Grid.Column="0" Text="Usuario:"
+                       Style="{StaticResource EtiquetaStyle}" />
+                <Entry Grid.Row="0" Grid.Column="1" x:Name="txtUsuario"
+                       Placeholder="Ingrese su usuario" />
+
+                <Label Grid.Row="1" Grid.Column="0" Text="Contraseña:"
+                       Style="{StaticResource EtiquetaStyle}" />
+                <Entry Grid.Row="1" Grid.Column="1" x:Name="txtClave"
+                       Placeholder="Ingrese su contraseña" IsPassword="True" />
+            </Grid>
+
+            <Button x:Name="btnIniciar" Text="Iniciar sesión"
+                    Style="{StaticResource BotonStyle}"
+                    Clicked="btnIniciar_Clicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
