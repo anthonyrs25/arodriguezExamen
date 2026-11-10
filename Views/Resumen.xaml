@@ -3,45 +3,77 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="arodriguezExamen.Views.Resumen"
              Title="Resumen"
-             BackgroundColor="#F6F2F2">
+             BackgroundColor="{StaticResource Fondo}">
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="15">
+        <Grid>
+            <Border HeightRequest="190" VerticalOptions="Start" StrokeThickness="0"
+                    StrokeShape="RoundRectangle 0,0,32,32"
+                    Background="{StaticResource GradienteCabecera}" />
 
-            <Label x:Name="lblUsuario" Style="{StaticResource UsuarioStyle}" />
+            <VerticalStackLayout Padding="20,14,20,28" Spacing="16">
 
-            <Label Text="RESUMEN" Style="{StaticResource TituloStyle}" />
+                <Border Style="{StaticResource ChipStyle}">
+                    <Label x:Name="lblUsuario" Style="{StaticResource UsuarioStyle}" />
+                </Border>
 
-            <!-- Grid 9 filas x 2 columnas -->
-            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
-                  ColumnDefinitions="Auto,*" RowSpacing="12" ColumnSpacing="15">
+                <VerticalStackLayout Spacing="2">
+                    <Label Text="Inscripción lista" Style="{StaticResource CabeceraStyle}" />
+                    <Label Text="Revisa los datos del estudiante"
+                           TextColor="White" Opacity="0.9" FontSize="13" />
+                </VerticalStackLayout>
 
-                <Label Grid.Row="0" Grid.Column="0" Text="Nombre:" Style="{StaticResource EtiquetaStyle}" />
-                <Label Grid.Row="0" Grid.Column="1" x:Name="lblNombre" />
+                <Border Style="{StaticResource TarjetaStyle}">
+                    <VerticalStackLayout Spacing="10">
 
-                <Label Grid.Row="1" Grid.Column="0" Text="Apellido:" Style="{StaticResource EtiquetaStyle}" />
-                <Label Grid.Row="1" Grid.Column="1" x:Name="lblApellido" />
+                        <Label Text="RESUMEN" Style="{StaticResource TituloStyle}" />
 
-                <Label Grid.Row="2" Grid.Column="0" Text="Edad:" Style="{StaticResource EtiquetaStyle}" />
-                <Label Grid.Row="2" Grid.Column="1" x:Name="lblEdad" />
+                        <!-- Grid 9 filas x 2 columnas -->
+                        <Grid RowDefinitions="48,48,48,48,48,48,48,48,60"
+                              ColumnDefinitions="Auto,*" ColumnSpacing="15">
 
-                <Label Grid.Row="3" Grid.Column="0" Text="Fecha:" Style="{StaticResource EtiquetaStyle}" />
-                <Label Grid.Row="3" Grid.Column="1" x:Name="lblFecha" />
+                            <Label Grid.Row="0" Grid.Column="0" Text="Nombre" Style="{StaticResource EtiquetaStyle}" />
+                            <Label Grid.Row="0" Grid.Column="1" x:Name="lblNombre" Style="{StaticResource ValorStyle}" />
+                            <BoxView Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource SeparadorStyle}" />
 
-                <Label Grid.Row="4" Grid.Column="0" Text="Ciudad:" Style="{StaticResource EtiquetaStyle}" />
-                <Label Grid.Row="4" Grid.Column="1" x:Name="lblCiudad" />
+                            <Label Grid.Row="1" Grid.Column="0" Text="Apellido" Style="{StaticResource EtiquetaStyle}" />
+                            <Label Grid.Row="1" Grid.Column="1" x:Name="lblApellido" Style="{StaticResource ValorStyle}" />
+                            <BoxView Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource SeparadorStyle}" />
 
-                <Label Grid.Row="5" Grid.Column="0" Text="País:" Style="{StaticResource EtiquetaStyle}" />
-                <Label Grid.Row="5" Grid.Column="1" x:Name="lblPais" />
+                            <Label Grid.Row="2" Grid.Column="0" Text="Edad" Style="{StaticResource EtiquetaStyle}" />
+                            <Label Grid.Row="2" Grid.Column="1" x:Name="lblEdad" Style="{StaticResource ValorStyle}" />
+                            <BoxView Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource SeparadorStyle}" />
 
-                <Label Grid.Row="6" Grid.Column="0" Text="Monto inicial:" Style="{StaticResource EtiquetaStyle}" />
-                <Label Grid.Row="6" Grid.Column="1" x:Name="lblMonto" />
+                            <Label Grid.Row="3" Grid.Column="0" Text="Fecha" Style="{StaticResource EtiquetaStyle}" />
+                            <Label Grid.Row="3" Grid.Column="1" x:Name="lblFecha" Style="{StaticResource ValorStyle}" />
+                            <BoxView Grid.Row="3" Grid.ColumnSpan="2" Style="{StaticResource SeparadorStyle}" />
 
-                <Label Grid.Row="7" Grid.Column="0" Text="Pago mensual:" Style="{StaticResource EtiquetaStyle}" />
-                <Label Grid.Row="7" Grid.Column="1" x:Name="lblPagoMensual" />
+                            <Label Grid.Row="4" Grid.Column="0" Text="Ciudad" Style="{StaticResource EtiquetaStyle}" />
+                            <Label Grid.Row="4" Grid.Column="1" x:Name="lblCiudad" Style="{StaticResource ValorStyle}" />
+                            <BoxView Grid.Row="4" Grid.ColumnSpan="2" Style="{StaticResource SeparadorStyle}" />
 
-                <Label Grid.Row="8" Grid.Column="0" Text="Pago total:" Style="{StaticResource EtiquetaStyle}" />
-                <Label Grid.Row="8" Grid.Column="1" x:Name="lblPagoTotal" />
-            </Grid>
-        </VerticalStackLayout>
+                            <Label Grid.Row="5" Grid.Column="0" Text="País" Style="{StaticResource EtiquetaStyle}" />
+                            <Label Grid.Row="5" Grid.Column="1" x:Name="lblPais" Style="{StaticResource ValorStyle}" />
+                            <BoxView Grid.Row="5" Grid.ColumnSpan="2" Style="{StaticResource SeparadorStyle}" />
+
+                            <Label Grid.Row="6" Grid.Column="0" Text="Monto inicial" Style="{StaticResource EtiquetaStyle}" />
+                            <Label Grid.Row="6" Grid.Column="1" x:Name="lblMonto" Style="{StaticResource ValorStyle}" />
+                            <BoxView Grid.Row="6" Grid.ColumnSpan="2" Style="{StaticResource SeparadorStyle}" />
+
+                            <Label Grid.Row="7" Grid.Column="0" Text="Pago mensual" Style="{StaticResource EtiquetaStyle}" />
+                            <Label Grid.Row="7" Grid.Column="1" x:Name="lblPagoMensual" Style="{StaticResource ValorStyle}" />
+                            <BoxView Grid.Row="7" Grid.ColumnSpan="2" Style="{StaticResource SeparadorStyle}" />
+
+                            <!-- El total es el dato protagonista -->
+                            <Label Grid.Row="8" Grid.Column="0" Text="Pago total"
+                                   Style="{StaticResource EtiquetaStyle}"
+                                   TextColor="{StaticResource Texto}" FontSize="15" />
+                            <Label Grid.Row="8" Grid.Column="1" x:Name="lblPagoTotal"
+                                   Style="{StaticResource ValorStyle}"
+                                   TextColor="{StaticResource Turquesa}" FontSize="24" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+        </Grid>
     </ScrollView>
 </ContentPage>

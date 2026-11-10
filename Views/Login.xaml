@@ -3,32 +3,65 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="arodriguezExamen.Views.Login"
              Title="Login"
-             BackgroundColor="#F6F2F2">
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20">
+             NavigationPage.HasNavigationBar="False"
+             Background="{StaticResource GradientePrincipal}">
+    <Grid>
+        <!-- Círculos decorativos translúcidos -->
+        <Ellipse Fill="#26FFFFFF" WidthRequest="240" HeightRequest="240"
+                 HorizontalOptions="End" VerticalOptions="Start"
+                 TranslationX="90" TranslationY="-70" />
+        <Ellipse Fill="#1FFFFFFF" WidthRequest="180" HeightRequest="180"
+                 HorizontalOptions="Start" VerticalOptions="End"
+                 TranslationX="-70" TranslationY="50" />
+        <Ellipse Fill="#1AFFFFFF" WidthRequest="90" HeightRequest="90"
+                 HorizontalOptions="Start" VerticalOptions="Start"
+                 TranslationX="30" TranslationY="110" />
 
-            <Image Source="logo_sudamericano.png" HeightRequest="90" />
+        <ScrollView>
+            <VerticalStackLayout Padding="24,90,24,24" Spacing="22">
 
-            <Label Text="CURSOS ONLINE - INICIO DE SESIÓN"
-                   Style="{StaticResource TituloStyle}" />
+                <Border Style="{StaticResource TarjetaStyle}" Padding="22,28">
+                    <VerticalStackLayout Spacing="18">
 
-            <!-- Grid 2 filas x 2 columnas -->
-            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*"
-                  RowSpacing="10" ColumnSpacing="10">
-                <Label Grid.Row="0" Grid.Column="0" Text="Usuario:"
-                       Style="{StaticResource EtiquetaStyle}" />
-                <Entry Grid.Row="0" Grid.Column="1" x:Name="txtUsuario"
-                       Placeholder="Ingrese su usuario" />
+                        <!-- Logo en la parte superior -->
+                        <Image Source="logo_sudamericano.png" HeightRequest="78" />
 
-                <Label Grid.Row="1" Grid.Column="0" Text="Contraseña:"
-                       Style="{StaticResource EtiquetaStyle}" />
-                <Entry Grid.Row="1" Grid.Column="1" x:Name="txtClave"
-                       Placeholder="Ingrese su contraseña" IsPassword="True" />
-            </Grid>
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="INICIO DE SESIÓN"
+                                   Style="{StaticResource TituloStyle}" />
+                            <Label Text="Plataforma de cursos online"
+                                   Style="{StaticResource SubtituloStyle}" />
+                        </VerticalStackLayout>
 
-            <Button x:Name="btnIniciar" Text="Iniciar sesión"
-                    Style="{StaticResource BotonStyle}"
-                    Clicked="btnIniciar_Clicked" />
-        </VerticalStackLayout>
-    </ScrollView>
+                        <!-- Grid 2 filas x 2 columnas -->
+                        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*"
+                              RowSpacing="12" ColumnSpacing="12">
+                            <Label Grid.Row="0" Grid.Column="0" Text="Usuario"
+                                   Style="{StaticResource EtiquetaStyle}" />
+                            <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource CampoStyle}">
+                                <Entry x:Name="txtUsuario" Placeholder="Tu usuario"
+                                       Style="{StaticResource EntradaStyle}" />
+                            </Border>
+
+                            <Label Grid.Row="1" Grid.Column="0" Text="Contraseña"
+                                   Style="{StaticResource EtiquetaStyle}" />
+                            <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource CampoStyle}">
+                                <Entry x:Name="txtClave" Placeholder="Tu contraseña"
+                                       IsPassword="True"
+                                       Style="{StaticResource EntradaStyle}" />
+                            </Border>
+                        </Grid>
+
+                        <Button x:Name="btnIniciar" Text="Iniciar sesión"
+                                Style="{StaticResource BotonStyle}"
+                                Clicked="btnIniciar_Clicked" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Label Text="Instituto de Tecnologías Sudamericano · Cuenca"
+                       TextColor="White" Opacity="0.85" FontSize="12"
+                       HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>

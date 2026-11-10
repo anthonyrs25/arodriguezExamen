@@ -10,34 +10,148 @@
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <!-- Título: rojo, tamaño 20, centrado -->
+            <!-- ===== PALETA ===== -->
+            <Color x:Key="Turquesa">#0E7490</Color>
+            <Color x:Key="TurquesaClaro">#06B6D4</Color>
+            <Color x:Key="Azul">#3B82F6</Color>
+            <Color x:Key="Rojo">#DC2626</Color>
+            <Color x:Key="Texto">#0F172A</Color>
+            <Color x:Key="TextoSuave">#64748B</Color>
+            <Color x:Key="Fondo">#F1F5F9</Color>
+            <Color x:Key="Linea">#E2E8F0</Color>
+
+            <!-- ===== DEGRADADOS ===== -->
+            <LinearGradientBrush x:Key="GradientePrincipal" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#0E7490" Offset="0.0" />
+                <GradientStop Color="#06B6D4" Offset="0.55" />
+                <GradientStop Color="#3B82F6" Offset="1.0" />
+            </LinearGradientBrush>
+
+            <LinearGradientBrush x:Key="GradienteCabecera" StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#0E7490" Offset="0.0" />
+                <GradientStop Color="#06B6D4" Offset="1.0" />
+            </LinearGradientBrush>
+
+            <!-- ===== TEXTOS ===== -->
+            <!-- Título de cada ventana: rojo, tamaño 20, centrado -->
             <Style x:Key="TituloStyle" TargetType="Label">
-                <Setter Property="TextColor" Value="#B71C0C" />
+                <Setter Property="TextColor" Value="{StaticResource Rojo}" />
                 <Setter Property="FontSize" Value="20" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="OpenSansSemibold" />
+                <Setter Property="CharacterSpacing" Value="2" />
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
             </Style>
 
-            <!-- "Usuario conectado" -->
+            <Style x:Key="SubtituloStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource TextoSuave}" />
+                <Setter Property="FontSize" Value="13" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+
+            <!-- Texto blanco grande sobre la cabecera -->
+            <Style x:Key="CabeceraStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="FontFamily" Value="OpenSansSemibold" />
+            </Style>
+
+            <!-- "Usuario conectado" (va dentro de un chip) -->
             <Style x:Key="UsuarioStyle" TargetType="Label">
-                <Setter Property="TextColor" Value="#2BA3B4" />
-                <Setter Property="FontSize" Value="14" />
-                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontFamily" Value="OpenSansSemibold" />
+                <Setter Property="VerticalOptions" Value="Center" />
             </Style>
 
             <!-- Etiquetas de los Grid -->
             <Style x:Key="EtiquetaStyle" TargetType="Label">
-                <Setter Property="TextColor" Value="#8E0D00" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{StaticResource TextoSuave}" />
+                <Setter Property="FontSize" Value="13" />
+                <Setter Property="FontFamily" Value="OpenSansSemibold" />
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
 
-            <!-- Botones -->
+            <!-- Valores del resumen -->
+            <Style x:Key="ValorStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource Texto}" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontFamily" Value="OpenSansSemibold" />
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <!-- ===== CONTENEDORES ===== -->
+            <!-- Tarjeta blanca redondeada con sombra -->
+            <Style x:Key="TarjetaStyle" TargetType="Border">
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="StrokeThickness" Value="0" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 24" />
+                <Setter Property="Padding" Value="18,22" />
+                <Setter Property="Shadow">
+                    <Shadow Brush="#0F172A" Opacity="0.12" Radius="18" Offset="0,8" />
+                </Setter>
+            </Style>
+
+            <!-- Caja "píldora" que envuelve cada Entry / Picker -->
+            <Style x:Key="CampoStyle" TargetType="Border">
+                <Setter Property="BackgroundColor" Value="{StaticResource Fondo}" />
+                <Setter Property="Stroke" Value="{StaticResource Linea}" />
+                <Setter Property="StrokeThickness" Value="1" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 14" />
+                <Setter Property="Padding" Value="10,0" />
+                <Setter Property="MinimumHeightRequest" Value="46" />
+            </Style>
+
+            <!-- Chip translúcido del usuario conectado -->
+            <Style x:Key="ChipStyle" TargetType="Border">
+                <Setter Property="BackgroundColor" Value="#33FFFFFF" />
+                <Setter Property="Stroke" Value="#66FFFFFF" />
+                <Setter Property="StrokeThickness" Value="1" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 18" />
+                <Setter Property="Padding" Value="14,7" />
+                <Setter Property="HorizontalOptions" Value="End" />
+            </Style>
+
+            <Style x:Key="SeparadorStyle" TargetType="BoxView">
+                <Setter Property="Color" Value="{StaticResource Linea}" />
+                <Setter Property="HeightRequest" Value="1" />
+                <Setter Property="VerticalOptions" Value="End" />
+            </Style>
+
+            <!-- ===== CAMPOS ===== -->
+            <Style x:Key="EntradaStyle" TargetType="Entry">
+                <Setter Property="TextColor" Value="{StaticResource Texto}" />
+                <Setter Property="PlaceholderColor" Value="#94A3B8" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="SelectorStyle" TargetType="Picker">
+                <Setter Property="TextColor" Value="{StaticResource Texto}" />
+                <Setter Property="TitleColor" Value="#94A3B8" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <!-- ===== BOTONES ===== -->
             <Style x:Key="BotonStyle" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="#2BA3B4" />
+                <Setter Property="Background" Value="{StaticResource GradientePrincipal}" />
                 <Setter Property="TextColor" Value="White" />
-                <Setter Property="CornerRadius" Value="8" />
+                <Setter Property="FontFamily" Value="OpenSansSemibold" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="CornerRadius" Value="16" />
+                <Setter Property="HeightRequest" Value="54" />
+            </Style>
+
+            <Style x:Key="BotonSecundarioStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#CFFAFE" />
+                <Setter Property="TextColor" Value="{StaticResource Turquesa}" />
+                <Setter Property="FontFamily" Value="OpenSansSemibold" />
+                <Setter Property="FontSize" Value="13" />
+                <Setter Property="CornerRadius" Value="14" />
+                <Setter Property="Padding" Value="12,0" />
+                <Setter Property="HeightRequest" Value="46" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

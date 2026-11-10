@@ -3,70 +3,113 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="arodriguezExamen.Views.Registro"
              Title="Registro"
-             BackgroundColor="#F6F2F2">
+             BackgroundColor="{StaticResource Fondo}">
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="15">
+        <Grid>
+            <!-- Cabecera con degradado; las tarjetas se montan encima -->
+            <Border HeightRequest="190" VerticalOptions="Start" StrokeThickness="0"
+                    StrokeShape="RoundRectangle 0,0,32,32"
+                    Background="{StaticResource GradienteCabecera}" />
 
-            <Label x:Name="lblUsuario" Style="{StaticResource UsuarioStyle}" />
+            <VerticalStackLayout Padding="20,14,20,28" Spacing="16">
 
-            <Label Text="REGISTRO" Style="{StaticResource TituloStyle}" />
+                <Border Style="{StaticResource ChipStyle}">
+                    <Label x:Name="lblUsuario" Style="{StaticResource UsuarioStyle}" />
+                </Border>
 
-            <!-- Grid 5 filas x 2 columnas -->
-            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*"
-                  RowSpacing="10" ColumnSpacing="10">
+                <VerticalStackLayout Spacing="2">
+                    <Label Text="Nueva inscripción" Style="{StaticResource CabeceraStyle}" />
+                    <Label Text="Curso online · $1500 · 4 cuotas"
+                           TextColor="White" Opacity="0.9" FontSize="13" />
+                </VerticalStackLayout>
 
-                <Label Grid.Row="0" Grid.Column="0" Text="Fecha:"
-                       Style="{StaticResource EtiquetaStyle}" />
-                <DatePicker Grid.Row="0" Grid.Column="1" x:Name="dpFecha" />
+                <!-- Tarjeta 1: datos del curso -->
+                <Border Style="{StaticResource TarjetaStyle}">
+                    <VerticalStackLayout Spacing="18">
 
-                <Label Grid.Row="1" Grid.Column="0" Text="País:"
-                       Style="{StaticResource EtiquetaStyle}" />
-                <Picker Grid.Row="1" Grid.Column="1" x:Name="pkPais"
-                        Title="Seleccione un país" />
+                        <Label Text="REGISTRO" Style="{StaticResource TituloStyle}" />
 
-                <Label Grid.Row="2" Grid.Column="0" Text="Ciudad:"
-                       Style="{StaticResource EtiquetaStyle}" />
-                <Picker Grid.Row="2" Grid.Column="1" x:Name="pkCiudad"
-                        Title="Seleccione una ciudad" />
+                        <!-- Grid 5 filas x 2 columnas -->
+                        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*"
+                              RowSpacing="12" ColumnSpacing="12">
 
-                <Label Grid.Row="3" Grid.Column="0" Text="Monto inicial:"
-                       Style="{StaticResource EtiquetaStyle}" />
-                <!-- Entry y botón comparten la misma celda -->
-                <Grid Grid.Row="3" Grid.Column="1" ColumnDefinitions="*,Auto" ColumnSpacing="8">
-                    <Entry Grid.Column="0" x:Name="txtMonto" Keyboard="Numeric"
-                           Placeholder="Ingrese el monto" />
-                    <Button Grid.Column="1" x:Name="btnCalcular" Text="Calcular"
-                            Style="{StaticResource BotonStyle}"
-                            Clicked="btnCalcular_Clicked" />
-                </Grid>
+                            <Label Grid.Row="0" Grid.Column="0" Text="Fecha"
+                                   Style="{StaticResource EtiquetaStyle}" />
+                            <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource CampoStyle}">
+                                <DatePicker x:Name="dpFecha" Format="dd/MM/yyyy"
+                                            TextColor="{StaticResource Texto}" FontSize="14" />
+                            </Border>
 
-                <Label Grid.Row="4" Grid.Column="0" Text="Pago mensual:"
-                       Style="{StaticResource EtiquetaStyle}" />
-                <Entry Grid.Row="4" Grid.Column="1" x:Name="txtPagoMensual"
-                       IsReadOnly="True" Placeholder="Campo calculado" />
-            </Grid>
+                            <Label Grid.Row="1" Grid.Column="0" Text="País"
+                                   Style="{StaticResource EtiquetaStyle}" />
+                            <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource CampoStyle}">
+                                <Picker x:Name="pkPais" Title="Seleccione un país"
+                                        Style="{StaticResource SelectorStyle}" />
+                            </Border>
 
-            <!-- Grid 2 filas x 3 columnas -->
-            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,*,*"
-                  RowSpacing="5" ColumnSpacing="10">
-                <Label Grid.Row="0" Grid.Column="0" Text="Nombre"
-                       Style="{StaticResource EtiquetaStyle}" />
-                <Label Grid.Row="0" Grid.Column="1" Text="Apellido"
-                       Style="{StaticResource EtiquetaStyle}" />
-                <Label Grid.Row="0" Grid.Column="2" Text="Edad"
-                       Style="{StaticResource EtiquetaStyle}" />
+                            <Label Grid.Row="2" Grid.Column="0" Text="Ciudad"
+                                   Style="{StaticResource EtiquetaStyle}" />
+                            <Border Grid.Row="2" Grid.Column="1" Style="{StaticResource CampoStyle}">
+                                <Picker x:Name="pkCiudad" Title="Seleccione una ciudad"
+                                        Style="{StaticResource SelectorStyle}" />
+                            </Border>
 
-                <Entry Grid.Row="1" Grid.Column="0" x:Name="txtNombre"
-                       Placeholder="Ingresar Nombre" />
-                <Entry Grid.Row="1" Grid.Column="1" x:Name="txtApellido"
-                       Placeholder="Ingresar Apellido" />
-                <Entry Grid.Row="1" Grid.Column="2" x:Name="txtEdad"
-                       Placeholder="Ingresar Edad" Keyboard="Numeric" />
-            </Grid>
+                            <Label Grid.Row="3" Grid.Column="0" Text="Monto inicial"
+                                   Style="{StaticResource EtiquetaStyle}" />
+                            <Border Grid.Row="3" Grid.Column="1" Style="{StaticResource CampoStyle}">
+                                <Entry x:Name="txtMonto" Keyboard="Numeric"
+                                       Placeholder="Ingrese el monto"
+                                       Style="{StaticResource EntradaStyle}" />
+                            </Border>
 
-            <Button x:Name="btnResumen" Text="Ver Resumen"
-                    Style="{StaticResource BotonStyle}"
-                    Clicked="btnResumen_Clicked" />
-        </VerticalStackLayout>
+                            <!-- Fila 5: botón a la izquierda, campo calculado a la derecha -->
+                            <Button Grid.Row="4" Grid.Column="0" x:Name="btnCalcular"
+                                    Text="Calcular pago"
+                                    Style="{StaticResource BotonSecundarioStyle}"
+                                    Clicked="btnCalcular_Clicked" />
+                            <Border Grid.Row="4" Grid.Column="1" Style="{StaticResource CampoStyle}"
+                                    BackgroundColor="#ECFEFF" Stroke="#A5F3FC">
+                                <Entry x:Name="txtPagoMensual" IsReadOnly="True"
+                                       Placeholder="Pago mensual"
+                                       Style="{StaticResource EntradaStyle}"
+                                       TextColor="{StaticResource Turquesa}"
+                                       FontFamily="OpenSansSemibold" />
+                            </Border>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Tarjeta 2: datos del estudiante -->
+                <Border Style="{StaticResource TarjetaStyle}">
+                    <!-- Grid 2 filas x 3 columnas -->
+                    <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,*,*"
+                          RowSpacing="8" ColumnSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Nombre"
+                               Style="{StaticResource EtiquetaStyle}" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="Apellido"
+                               Style="{StaticResource EtiquetaStyle}" />
+                        <Label Grid.Row="0" Grid.Column="2" Text="Edad"
+                               Style="{StaticResource EtiquetaStyle}" />
+
+                        <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource CampoStyle}">
+                            <Entry x:Name="txtNombre" Placeholder="Nombre"
+                                   Style="{StaticResource EntradaStyle}" />
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource CampoStyle}">
+                            <Entry x:Name="txtApellido" Placeholder="Apellido"
+                                   Style="{StaticResource EntradaStyle}" />
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="2" Style="{StaticResource CampoStyle}">
+                            <Entry x:Name="txtEdad" Placeholder="Edad" Keyboard="Numeric"
+                                   Style="{StaticResource EntradaStyle}" />
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <Button x:Name="btnResumen" Text="Ver Resumen"
+                        Style="{StaticResource BotonStyle}"
+                        Clicked="btnResumen_Clicked" />
+            </VerticalStackLayout>
+        </Grid>
     </ScrollView>
 </ContentPage>
